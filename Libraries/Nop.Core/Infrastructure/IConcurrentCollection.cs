@@ -15,7 +15,7 @@ public partial interface IConcurrentCollection<TValue>
     /// <returns>
     /// True if the key was found, otherwise false
     /// </returns>
-    bool TryGetValue(string key, out TValue value);
+    bool TryGetValue(string key, out TValue value); 
 
     /// <summary>
     /// Adds a key-value pair to the collection
