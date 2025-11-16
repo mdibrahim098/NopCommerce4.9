@@ -29,21 +29,25 @@
     <!-- We copy the entire \App_Data directory. But we ignore JSON files and data protection keys  -->
     <Content Include="App_Data\**" CopyToPublishDirectory="PreserveNewest" Exclude="App_Data\*.json" />
     <Content Remove="App_Data\*.json" />
+    <Content Remove="Themes\NopRoot\Views\Plugins\Nop.Plugin.Misc.Rfq\**" />
     <Content Remove="App_Data\Installation\SampleData.json" />
     <None Include="App_Data\Installation\SampleData.json" CopyToPublishDirectory="PreserveNewest" />
     <Content Update="App_Data\DataProtectionKeys\*.xml" CopyToPublishDirectory="Never" />
 
     <Compile Remove="Plugins\**;Themes\**" />
+
+    <Compile Remove="Themes\NopRoot\Views\Plugins\Nop.Plugin.Misc.Rfq\**" />
     <Content Remove="Plugins\**;Themes\**" />
     <EmbeddedResource Remove="Plugins\**;Themes\**" />
+    <EmbeddedResource Remove="Themes\NopRoot\Views\Plugins\Nop.Plugin.Misc.Rfq\**" />
     <None Remove="Plugins\**;Themes\**" />
+    <None Remove="Themes\NopRoot\Views\Plugins\Nop.Plugin.Misc.Rfq\**" />
     <None Include="Plugins\**" CopyToPublishDirectory="PreserveNewest" Exclude="Plugins\**\runtimes\**;Plugins\**\ref\**;Plugins\**\*.pdb" />
 
     <Content Include="Themes\**" CopyToPublishDirectory="PreserveNewest" CopyToOutputDirectory="Never" />
 
     <!-- We copy the \Logs directory -->
     <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
-    <Content Remove="Themes\NopRoot\Views\Order\CustomerOrders.cshtml" />
     <Content Remove="Themes\NopRoot\Views\Plugins\Nop.Plugin.Misc.Rfq\CustomerRequest.cshtml" />
     <None Remove="Plugins\Uploaded\placeholder.txt" />
     <Content Include="Plugins\Uploaded\placeholder.txt">
@@ -102,9 +106,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Themes\NopRoot\Views\Plugins\Nop.Plugin.Misc.Rfq\CustomerRequest.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </None>
+    <Folder Include="Themes\NopRoot\Views\Plugins\" />
   </ItemGroup>
 
   <!-- This target execute after "Build" target.

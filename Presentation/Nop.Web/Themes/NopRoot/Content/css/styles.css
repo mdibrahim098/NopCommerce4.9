@@ -337,13 +337,42 @@ label, label + * {
   padding: 30px 15px;
 }
 
+/*Change style for request for quote*/
+
 .inputs {
   position: relative;
   margin: 0 0 15px;
   text-align: center;
-  white-space: nowrap; /*fix for 'required' elements*/
-  font-size: 0;
+  white-space: nowrap; /* keep them on one line */
 }
+
+  .inputs label {
+    font-size: 14px; /* reset from 0 */
+    display: inline-block; /* ensures labels stay inline and respect spacing */
+    margin-right: 5px; /* optional spacing */
+    font-weight: bold;
+  }
+
+
+/*Main style for request for quote*/
+
+/*.inputs {
+  position: relative;
+  margin: 0 0 15px;
+  text-align: center;*/
+  /*white-space: nowrap;*/ /*fix for 'required' elements*/
+  /*font-size: 0;
+}
+
+ 
+  .inputs label {
+    width: 100%;
+    margin: 0 0 10px;
+    text-align: left;
+    font-size: 14px;*/ /*reset zeroing*/
+    /*color: #000;
+    font-weight: bold;
+  }*/
 
   .inputs:after {
     content: "";
@@ -351,14 +380,7 @@ label, label + * {
     clear: both;
   }
 
-  .inputs label {
-    width: 100%;
-    margin: 0 0 10px;
-    text-align: left;
-    font-size: 14px; /*reset zeroing*/
-    color: #000;
-    font-weight: bold;
-  }
+  
 
   .inputs input[type="text"],
   .inputs input[type="email"],
@@ -399,6 +421,7 @@ label, label + * {
     margin: 0 0 0 10px;
     text-align: left;
   }*/
+
 
 .required {
   margin: 0 -8px 0 3px; /*siblings offset*/
@@ -9619,7 +9642,7 @@ span.password-eye {
   padding: 5px;
 }
 
-
+/*Request for Quote*/
 
 
 

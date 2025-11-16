@@ -1,4 +1,6 @@
 ﻿@model CustomerOrderListModel
+@using Nop.Services
+
 @{
     Layout = "_ColumnsTwo";
 
@@ -17,7 +19,8 @@
         <h1>@T("Account.MyAccount") - @T("Account.CustomerOrders")</h1>
     </div>
     <div class="page-body">
-        @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.CustomerOrdersTop, additionalData = Model })
+
+      @*   @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.CustomerOrdersTop, additionalData = Model })
         @if (Model.RecurringOrders.Count > 0)
         {
             <div class="section recurring-payments">
@@ -129,6 +132,17 @@
                             </div>
                             }
                         }
+ *@
+
+        <form asp-route="@NopRouteNames.General.CUSTOMER_ORDERS" method="post">
+            <div class="order-filters">
+                <div class="order-filters__row">
+                    <label class="order-filters__label">@T("Account.CustomerOrders.Period")</label>
+                    <select class="order-filters__input" id="periodSelector" asp-items="@Model.AvailableLimits"></select>
+                </div>
+            </div>
+        </form>
+        @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.CustomerOrdersTop, additionalData = Model })
 
         @if (Model.Orders.Count > 0)
         {
@@ -147,9 +161,9 @@
                         <div class="buttons">
                             @if (order.IsReturnRequestAllowed)
                             {
-                                <button type="button" class="button-2 return-items-button" onclick="setLocation('@Url.RouteUrl("ReturnRequest", new { orderId = order.Id })')">@T("Account.CustomerOrders.ReturnItems")</button>
+                                <button type="button" class="button-2 return-items-button" onclick="setLocation('@Url.RouteUrl(NopRouteNames.Standard.RETURN_REQUEST, new { orderId = order.Id })')">@T("Account.CustomerOrders.ReturnItems")</button>
                             }
-                            <button type="button" class="button-2 order-details-button" onclick="setLocation('@Url.RouteUrl("OrderDetails", new { orderId = order.Id })')">@T("Account.CustomerOrders.OrderDetails")</button>
+                            <button type="button" class="button-2 order-details-button" onclick="setLocation('@Url.RouteUrl(NopRouteNames.Standard.ORDER_DETAILS, new { orderId = order.Id })')">@T("Account.CustomerOrders.OrderDetails")</button>
                         </div>
                     </div>
                 }
